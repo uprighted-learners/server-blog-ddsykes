@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const blogFilePath = path.json(__dirname, "../api/blog.json");
+const blogFilePath = path.join(__dirname, "../api/blog.json");
 
 //Get all posts
 router.get("/posts", (req, res) => {
@@ -42,10 +42,10 @@ router.post("/posts", (req, res) => {
   });
 });
 
-//Updting the existing  post
+//Updating the existing  post
 router.put("/posts/:post_id", (req, res) => {
   const postId = parseInt(req.params.postId);
-  const updatePost = req.body;
+  const updatedPost = req.body;
   fs.readFile(blogFilePath, (err, data) => {
     if (err) return res.status(500).json({ error: "Failed to read the data" });
     let posts = JSON.parse(data);
@@ -67,8 +67,9 @@ router.delete("/posts/:post_id", (req, res) => {
   fs.readFile(blogFilePath, (err, data) => {
     if (err) return res.status(500).json({ error: "Failed to read the data" });
     let posts = JSON.parse(data);
-    const newPost = posts.filter((p) => p.post_id !== postId);
-    if (err) return res.status(404).json({ error: "Post not found" });
+    const newPosts = posts.filter((p) => p.post_id !== postId);
+    if (newPosts.length === posts.length)
+      return res.status(404).json({ error: "Post not found" });
     fs.writeFile(blogFilePath, JSON.stringify(newPosts, null, 2), (err) => {
       if (err)
         return res.status(500).json({ error: "Failed to write the data" });

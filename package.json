@@ -2,7 +2,7 @@
   "name": "server-blog-ddsykes",
   "version": "1.0.0",
   "description": "In this project, you will create a backend of a blog application, utilizing Model View Controller architecture.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

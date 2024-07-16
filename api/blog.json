@@ -1,8 +1,8 @@
 [
-    {
-        "post_id": 1,
-        "title": "First Blog Post",
-        "author": "Paul Niemczyk",
-        "body": "These student devs keep getting younger and smarter"
-    }
+  {
+    "title": "Second Blog Post",
+    "author": "Jane Doe",
+    "body": "This is another blog post.",
+    "post_id": 2
+  }
 ]
