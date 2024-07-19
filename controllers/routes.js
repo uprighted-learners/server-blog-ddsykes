@@ -44,7 +44,7 @@ router.post("/posts", (req, res) => {
 
 //Updating the existing  post
 router.put("/posts/:post_id", (req, res) => {
-  const postId = parseInt(req.params.postId);
+  const postId = parseInt(req.params.post_id);
   const updatedPost = req.body;
   fs.readFile(blogFilePath, (err, data) => {
     if (err) return res.status(500).json({ error: "Failed to read the data" });
